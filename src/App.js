@@ -20,33 +20,43 @@ function App() {
     const cid = await client.put(fileInput.files);
     const fileUrl = document.getElementById("file-url");
     fileUrl.innerText = `https://${cid}.ipfs.dweb.link/`;
+    fileUrl.style.display = "block"; // show the link after uploading the file
   }
 
   return (
-    <div>
-      {auth.loading ? (
-        "Loading"
-      ) : auth.isLoggedIn ? (
-        <div>
-          <p>Welcome to Gradblocks</p>
-           <p>Choose user type </p>
+    <div style={{
+      background: 'linear-gradient(to bottom right, #9f00c5, #7232bd)',
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}>
+      <div>
+        {auth.loading ? (
+          "Loading"
+        ) : auth.isLoggedIn ? (
+          <div>
+            <h1 style={{ fontSize: '5rem', fontWeight: 'bold', color: 'white', marginBottom: '2rem' }}>Gradblocks</h1>
+            <p style={{ color: 'white' }}>Choose user type </p>
 
-                <select id="cars">
-                  <option value="volvo">Organisation</option>
-                  <option value="saab">Organisation's Client</option>
-                </select>
-                        <br></br>
-                        <br></br>
-          <label htmlFor={"file-to-upload"}>File To Upload</label>
-          <input id={"file-to-upload"} type={"file"}/>
-          <button onClick={uploadFile}>Upload</button>
-          <p id={"file-url"}/>
-        </div>
-      ) : (
-        <div>
-          <Auth externalWallet={true} theme={"light"} onLogin={onLogin} />
-        </div>
-      )}
+            <select id="cars" style={{ marginBottom: '2rem' }}>
+              <option value="volvo">Organisation</option>
+              <option value="saab">Organisation's Client</option>
+            </select>
+            <br></br>
+            <br></br>
+            <label htmlFor={"file-to-upload"} style={{ color: 'white' }}>File To Upload</label>
+            <input id={"file-to-upload"} type={"file"} />
+            <button onClick={uploadFile} style={{ marginLeft: '1rem' }}>Upload</button>
+            <p id={"file-url"} style={{ color: 'white', marginTop: '1rem', display: 'none' }} />
+          </div>
+        ) : (
+          <div>
+            <Auth externalWallet={true} theme={"light"} onLogin={onLogin} />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
