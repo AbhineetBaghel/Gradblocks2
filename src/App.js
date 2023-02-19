@@ -41,7 +41,7 @@ function App() {
             <p style={{ color: 'white' }}>Choose user type </p>
 
             <select id="cars" style={{ marginBottom: '2rem' }}>
-              <option value="volvo">Organisation</option>
+              <option value="volvo">Organisation Login</option>
               <option value="saab">Organisation's Client</option>
             </select>
             <br></br>
@@ -50,6 +50,7 @@ function App() {
             <input id={"file-to-upload"} type={"file"} />
             <button onClick={uploadFile} style={{ marginLeft: '1rem' }}>Upload</button>
             <p id={"file-url"} style={{ color: 'white', marginTop: '1rem', display: 'none' }} />
+            
           </div>
         ) : (
           <div>
